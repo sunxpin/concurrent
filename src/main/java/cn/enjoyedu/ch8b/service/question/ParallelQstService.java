@@ -13,6 +13,7 @@ import java.util.concurrent.*;
 public class ParallelQstService {
 
     /*题目在本地的缓存*/
+    //使用ConcurrentLinkedHashMap 代替ConcurrentHashMap
     private static ConcurrentHashMap<Integer,QuestionInCacheVo> questionCache =
             new ConcurrentHashMap<>();
 
