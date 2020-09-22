@@ -18,6 +18,17 @@
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+        <!-- 顺序UUID -->
+        <dependency>
+            <groupId>com.fasterxml.uuid</groupId>
+            <artifactId>java-uuid-generator</artifactId>
+            <version>3.1.4</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,4 +43,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories><!-- 代码库 -->
+        <repository>
+            <id>maven-ali</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public//</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
