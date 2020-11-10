@@ -28,8 +28,7 @@ public class CreatePendingDocs {
                 int questionId = r.nextInt(Consts.SIZE_OF_QUESTION_BANK);
                 questionList.add(questionId);
             }
-            SrcDocVo pendingDocVo = new SrcDocVo("pending_" + i,
-                    questionList);
+            SrcDocVo pendingDocVo = new SrcDocVo("pending_" + i, questionList);
             docList.add(pendingDocVo);
         }
         return docList;

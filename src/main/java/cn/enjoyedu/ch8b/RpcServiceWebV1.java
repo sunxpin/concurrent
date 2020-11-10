@@ -15,21 +15,16 @@ import java.util.concurrent.*;
 public class RpcServiceWebV1 {
 
     /*处理文档生成的线程池*/
-    private static ExecutorService docMakeService
-            = Executors.newFixedThreadPool(Consts.THREAD_COUNT * 2);
+    private static ExecutorService docMakeService = Executors.newFixedThreadPool(Consts.THREAD_COUNT * 2);
 
     /*处理文档上传的线程池*/
-    private static ExecutorService docUploadService
-            = Executors.newFixedThreadPool(Consts.THREAD_COUNT * 2);
+    private static ExecutorService docUploadService = Executors.newFixedThreadPool(Consts.THREAD_COUNT * 2);
 
-    private static CompletionService<String> docCompletingServcie
-            = new ExecutorCompletionService<String>(docMakeService);
-    private static CompletionService<String> docUploadCompletingServcie
-            = new ExecutorCompletionService<String>(docUploadService);
+    private static CompletionService<String> docCompletingServcie = new ExecutorCompletionService<String>(docMakeService);
+    private static CompletionService<String> docUploadCompletingServcie = new ExecutorCompletionService<String>(docUploadService);
 
 
-    public static void main(String[] args)
-            throws ExecutionException, InterruptedException {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         int docCount = 60;
         System.out.println("题库开始初始化...........");
         SL_QuestionBank.initBank();
@@ -63,8 +58,7 @@ public class RpcServiceWebV1 {
         public String call() throws Exception {
             long start = System.currentTimeMillis();
             String result = ProduceDocService.makeDoc(pendingDocVo);
-            System.out.println("文档" + result + "生成耗时："
-                    + (System.currentTimeMillis() - start) + "ms");
+            System.out.println("文档" + result + "生成耗时：" + (System.currentTimeMillis() - start) + "ms");
             return result;
         }
     }
@@ -82,8 +76,7 @@ public class RpcServiceWebV1 {
         public String call() throws Exception {
             long start = System.currentTimeMillis();
             String result = ProduceDocService.upLoadDoc(fileName);
-            System.out.println("已上传至[" + result + "]耗时："
-                    + (System.currentTimeMillis() - start) + "ms");
+            System.out.println("已上传至[" + result + "]耗时：" + (System.currentTimeMillis() - start) + "ms");
             return result;
         }
     }

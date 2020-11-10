@@ -35,10 +35,6 @@ public class ForkJoinRenameFiles extends RecursiveAction {
                     subTasks.add(new ForkJoinRenameFiles(file));
                 } else {
                     String name = file.getName();
-                    if (name.startsWith("2048扫码获取新地址")) {
-                        FileUtil.del(file);
-                        continue;
-                    }
 
                     String absolutePath = file.getAbsolutePath();
                     String[] split = absolutePath.split("\\\\");

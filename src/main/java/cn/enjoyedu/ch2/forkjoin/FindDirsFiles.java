@@ -18,15 +18,13 @@ public class FindDirsFiles extends RecursiveAction {
     private File path;
 
     //            public static final String NAME = "完具m";
-    public static final String NAME = "完具m_榨汁姬 ";
-//    public static final String NAME = "完具m_娜美妖姬_榨汁姬 ";
-//    public static final String NAME = "完具m_娜美妖姬";
+    public static final String NAME = "完具m ";
 
     public static final String PIC = "PNG,png,jpg,jpeg,JPG,JPEG,BMP,bmp";
     public static final String VIDEO = "MP4,mp4";
 
-    //    public static final String PIC_DEST = "E:/完具m_娜美妖姬 Collections/PIC/";
-    public static final String PIC_DEST = "E:/榨汁姬-完具m-娜美妖姬/Pictures/";
+    //    public static final String PIC_DEST = "E:/完具m Collections/PIC/";
+    public static final String PIC_DEST = "E:/完具m/Pictures/";
     public static final String MV_DEST = "E:/完具m/MV/";
 
     private AtomicInteger count = new AtomicInteger(1);
@@ -49,9 +47,7 @@ public class FindDirsFiles extends RecursiveAction {
                     // /获取文件的后缀名 .jpg
                     String suffix = file.getName().substring(lastIndexOf + 1);
                     // 遇到文件，检查。fun2048.com@.DS_Store
-                    if (file.getName().startsWith("2048扫码获取新地址")) {
-                        FileUtil.del(file);
-                    } else if (PIC.contains(suffix)) {
+                    if (PIC.contains(suffix)) {
 //                        dealPictures(file);
 //                        copyPictures(file);
                     } else if (VIDEO.contains(suffix)) {
@@ -93,9 +89,6 @@ public class FindDirsFiles extends RecursiveAction {
         String[] split = file.getParent().split("\\\\");
         String newStr = split[split.length - 1];
         newStr = newStr.trim().replace(" ", "");
-        if (newStr.contains("疑似") || newStr.contains("鬼知道")) {
-            newStr = "";
-        }
         String REGEX = "[^(0-9).]";
         String num = Pattern.compile(REGEX).matcher(newStr).replaceAll("").trim();
         if (num.length() >= 9) num = num.substring(0, 8);
@@ -108,7 +101,6 @@ public class FindDirsFiles extends RecursiveAction {
         try {
             // 用一个 ForkJoinPool 实例调度总任务
             ForkJoinPool pool = new ForkJoinPool();
-//            FindDirsFiles task = new FindDirsFiles(new File("H:/完具m(娜美)_榨汁姬/"));
 //            FindDirsFiles task = new FindDirsFiles(new File("F:/Download/[2018年11月-2019年03月]/"));
             FindDirsFiles task = new FindDirsFiles(new File("H:\\完具m"));
 
